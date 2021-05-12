@@ -183,14 +183,15 @@
                         if(gas_key != null){
                             query = TRANS_URL + '?text=' + recog_text + '&source=' + trans_sourcelang + '&target=' + trans_destlang+'&callback=?';
                             $.getJSON(query, function(responseText) {
-                                if (request.readyState === 4 && request.status === 200){
+                             
+                               
                                     document.getElementById('speech_text-imb').innerHTML = recog_text;
                                     document.getElementById('speech_text-bg').innerHTML = recog_text;
                                     document.getElementById('speech_text-fg').innerHTML = recog_text;
                                     document.getElementById('trans_text-imb').innerHTML = responseText;
                                     document.getElementById('trans_text-bg').innerHTML = responseText;
                                     document.getElementById('trans_text-fg').innerHTML = responseText;
-                                }
+                                
                             });
                         } else {
                             document.getElementById('speech_text-imb').innerHTML = recog_text;
