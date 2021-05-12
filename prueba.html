@@ -181,7 +181,7 @@
                         document.getElementById('speech_text-fg').innerHTML = recog_text;
 
                         if(gas_key != null){
-                            query = TRANS_URL + '?text=' + recog_text + '&source=' + trans_sourcelang + '&target=' + trans_destlang;
+                            query = TRANS_URL + '?text=' + recog_text + '&source=' + trans_sourcelang + '&target=' + trans_destlang+'&callback=?';
                             $.getJSON(query, function(request) {
                                 console.log(request);
                                 if (request.readyState === 4 && request.status === 200){
