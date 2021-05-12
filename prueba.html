@@ -6,6 +6,8 @@
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 
     <title>ninshikiChan</title>
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
 
     <style type="text/css">
         @font-face{
@@ -180,10 +182,8 @@
 
                         if(gas_key != null){
                             query = TRANS_URL + '?text=' + recog_text + '&source=' + trans_sourcelang + '&target=' + trans_destlang;
-                            request.open('GET', query, true);
-                            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-                            request.onreadystatechange = function(){
+                            $.getJSON(query, function(request) {
+                                console.log(request);
                                 if (request.readyState === 4 && request.status === 200){
                                     document.getElementById('speech_text-imb').innerHTML = recog_text;
                                     document.getElementById('speech_text-bg').innerHTML = recog_text;
@@ -192,9 +192,7 @@
                                     document.getElementById('trans_text-bg').innerHTML = request.responseText;
                                     document.getElementById('trans_text-fg').innerHTML = request.responseText;
                                 }
-                                vr_function();
                             }
-                            request.send(null);
                         } else {
                             document.getElementById('speech_text-imb').innerHTML = recog_text;
                             document.getElementById('speech_text-bg').innerHTML = recog_text;
